@@ -1,0 +1,132 @@
+{
+  "rooms": [
+    {
+      "roomId": 0,
+      "roomName": "11111",
+      "roomStartWork": "23:02",
+      "roomEndWork": "23:02",
+      "creatorEmail": "sanek.miron2@gmail.com",
+      "roomPassword": "1111",
+      "doctors": [],
+      "messages": [],
+      "chat": [
+        {
+          "time": "23:03",
+          "id": 0,
+          "name": "11111",
+          "message": "sdffefef"
+        }
+      ],
+      "active": -1,
+      "finishedDoctors": []
+    },
+    {
+      "roomId": 1,
+      "roomName": "Докторишки",
+      "roomStartWork": "23:06",
+      "roomEndWork": "08:05",
+      "creatorEmail": "sanek.miron2@gmail.com",
+      "roomPassword": "1111",
+      "doctors": [
+        {
+          "id": 0,
+          "name": "Екатерина Докторврач",
+          "startWork": 1388,
+          "endWork": 1200,
+          "lunchTime": 308,
+          "counter": 8,
+          "counterSkip": 0,
+          "isNext": false,
+          "isWorking": true,
+          "isLunch": false,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:23:8. Закончит работать:20:00",
+          "finishedEarlierThanExpected": false
+        },
+        {
+          "id": 1,
+          "name": "Екатерина",
+          "startWork": 1390,
+          "endWork": 1417,
+          "lunchTime": 1419,
+          "counter": 7,
+          "counterSkip": 0,
+          "isNext": true,
+          "isWorking": true,
+          "isLunch": false,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:23:10. Закончит работать:23:37",
+          "finishedEarlierThanExpected": false
+        },
+        {
+          "id": 2,
+          "name": "Екатерина",
+          "startWork": 1391,
+          "endWork": 1425,
+          "lunchTime": 1403,
+          "counter": 0,
+          "counterSkip": 0,
+          "isNext": false,
+          "isWorking": true,
+          "isLunch": true,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:23:11. Закончит работать:23:45",
+          "finishedEarlierThanExpected": false
+        }
+      ],
+      "messages": [],
+      "chat": [
+        {
+          "time": "23:13",
+          "id": 7,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацываваувавававсвававуаавав"
+        },
+        {
+          "time": "23:13",
+          "id": 6,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацываваувавававсвававуаа"
+        },
+        {
+          "time": "23:13",
+          "id": 5,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацываваувавававсва"
+        },
+        {
+          "time": "23:13",
+          "id": 4,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацываваувавава"
+        },
+        {
+          "time": "23:13",
+          "id": 3,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацывавау"
+        },
+        {
+          "time": "23:13",
+          "id": 2,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпкцацу"
+        },
+        {
+          "time": "23:13",
+          "id": 1,
+          "name": "Екатерина",
+          "message": "долтпаидлпиапкпк"
+        },
+        {
+          "time": "23:13",
+          "id": 0,
+          "name": "Екатерина",
+          "message": "долтпаидлпи"
+        }
+      ],
+      "active": 1,
+      "finishedDoctors": []
+    }
+  ]
+}
