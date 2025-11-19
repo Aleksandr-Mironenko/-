@@ -68,7 +68,7 @@ export default function Och() {
     const data = await res.json();
 
     if (data.room === undefined || data.room === null) {
-      router.push(`/allRooms`)
+      router.push(`/`)
     } else {
       setDifferent(data.room.messages.length !== allstate.messages.length)
       setAllstate(data.room)
