@@ -48,7 +48,7 @@ const AllRooms = () => {
     checkAuth()
   }, [])
 
-  const clickroom = (id) => {
+  const clickroom = (id: number | string) => {
     if (logged && idDoc && roomId && id == roomId) {
       router.push(`/och/${id}`)
     } else {
