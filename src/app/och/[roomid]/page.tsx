@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect, startTransition, useMemo } from 'react'
+import { useState, useRef, useEffect, startTransition, useMemo, SetStateAction } from 'react'
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Room, Doctor } from '@/app/DTO'
@@ -230,15 +230,14 @@ export default function Och() {
       </li >
     )
   })
-  function funcDebounce(func: { (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (value: SetStateAction<string>): void; (arg0: any): void; }) {
-    let timerId = null
-    return (...args) => {
-      clearTimeout(timerId)
+  function funcDebounce(func: (value: SetStateAction<string>) => void) {
+    let timerId: NodeJS.Timeout | null = null;
+    return (...args: [SetStateAction<string>]) => {
+      if (timerId) clearTimeout(timerId);
       timerId = setTimeout(() => {
-        func(...args)
-      }, 300
-      )
-    }
+        func(...args);
+      }, 300);
+    };
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -281,7 +280,9 @@ export default function Och() {
 
           <textarea
             className={styles.room__chat_form_textarea}
-            placeholder=' Есть что написать?' rows={3} onChange={(e) => debouncedSetNewMessage(e.target.value)}
+            placeholder=' Есть что написать?'
+            rows={3}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => debouncedSetNewMessage(e.target.value)}
           />
         </label>
 
@@ -303,10 +304,10 @@ export default function Och() {
 
   const [api, contextHolder] = notification.useNotification();
 
-  const openNotificationWithIcon = (text) => {
-    api["info"]({
+  const openNotificationWithIcon = (text: string) => {
+    api.info({
       message: 'Notification Title',
-      description: `${text}`,
+      description: text,
     });
   };
 
