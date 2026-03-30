@@ -3,8 +3,7 @@ import { readState, dataFile } from "@/app/helpers/getState";
 import fs from "fs/promises";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { roomid, message, id } = body;
+  const { roomid, message, id } = await req.json();
 
   // Загружаем текущее состояние
   const state = await readState("state.json");
@@ -27,12 +26,16 @@ export async function POST(req: Request) {
   }
 
   const room = { ...state.rooms[roomIndex] };
+
+  if (!("doctors" in room)) {
+    return NextResponse.json({ error: "Room has no doctors" }, { status: 400 });
+  }
   const findDoctorIdex = room.doctors.findIndex(el => el.id == id)
 
   if (message !== '' && message !== undefined && message !== null) {
     room?.chat?.unshift({
       time: validTime(),
-      id: room.chat.length ? Math.max(...room.chat.map(d => d.id)) + 1 : 0,
+      id: room.chat.length ? Math.max(...room.chat.map(d => Number(d.id))) + 1 : 0,
       name: room.doctors[findDoctorIdex].name,
       message: message
     })

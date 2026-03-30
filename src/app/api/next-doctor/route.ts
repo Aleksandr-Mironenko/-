@@ -3,8 +3,7 @@ import { readState, dataFile } from "@/app/helpers/getState";
 import fs from "fs/promises";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { roomid, reason } = body;
+  const { roomid, reason } = await req.json();
 
   const state = await readState("state.json");
 
@@ -16,14 +15,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Room not found" }, { status: 404 });
   }
 
-  const room = { ...state.rooms[roomIndex] };
+  const roomObj = { ...state.rooms[roomIndex] };
 
+  if (!("doctors" in roomObj)) {
+    return NextResponse.json({ error: "Room has no doctors" }, { status: 400 });
+  }
   // const roomNOIIsWorking = room.doctors.filter((doc) => !doc.isWorking);
-  const roomIsWorking = room.doctors.filter((doc) => doc.isLunch);
-  const roomNOInLunch = room.doctors.filter((doc) => !doc.isLunch);
-  const roomInLunch = room.doctors.filter((doc) => doc.isLunch);
+  const roomIsWorking = roomObj.doctors.filter((doc) => doc.isLunch);
+  const roomNOInLunch = roomObj.doctors.filter((doc) => !doc.isLunch);
+  const roomInLunch = roomObj.doctors.filter((doc) => doc.isLunch);
 
-  const isWorkingNolunch = room.doctors.filter((doc) => {
+  const isWorkingNolunch = roomObj.doctors.filter((doc) => {
     if (doc.isWorking && !doc.isLunch) {
       return doc
     };
@@ -49,13 +51,13 @@ export async function POST(req: Request) {
     );
   }
 
-  let lastActiveId = room.active;
+  let lastActiveId = roomObj.active;
 
   const maxId = Math.max(...isWorkingNolunch.map((d) => d.id));
   let nextDoctor = null;
   let attempts = 0;
 
-  while (!nextDoctor && attempts <= room.doctors.length) {
+  while (!nextDoctor && attempts <= roomObj.doctors.length) {
     lastActiveId++;
     if (lastActiveId > maxId) lastActiveId = 0;
     nextDoctor = isWorkingNolunch.find((doc) => {
@@ -68,9 +70,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Next doctor not found" }, { status: 404 });
   }
 
-  room.doctors = room.doctors.map((doc) => {
+  roomObj.doctors = roomObj.doctors.map((doc) => {
     if (isWorkingNolunch.length === 1) { return doc }
-    if (doc.id === room.active) return { ...doc, isNext: false };
+    if (doc.id === roomObj.active) return { ...doc, isNext: false };
     if (doc.id === nextDoctor.id) return { ...doc, isNext: true };
     return doc;
   });
@@ -85,12 +87,12 @@ export async function POST(req: Request) {
     return `${hours}:${minutes}`
   }
 
-  const prevDoctorIndex = room.doctors.findIndex((d) => d.id === room.active);
+  const prevDoctorIndex = roomObj.doctors.findIndex((d) => d.id === roomObj.active);
   if (prevDoctorIndex !== -1) {
-    const prevDoctor = room.doctors[prevDoctorIndex];
+    const prevDoctor = roomObj.doctors[prevDoctorIndex];
     if (reason && reason.trim() !== "") {
       prevDoctor.counterSkip = (prevDoctor.counterSkip || 0) + 1;
-      room.messages.push(
+      roomObj.messages.push(
         `${prevDoctor.name} пропустил(а) очередь в ${validTime()}. Причина: ${reason}`
       );
     } else {
@@ -98,8 +100,8 @@ export async function POST(req: Request) {
     }
   }
 
-  room.active = nextDoctor.id;
-  state.rooms[roomIndex] = room;
+  roomObj.active = nextDoctor.id;
+  state.rooms[roomIndex] = roomObj;
   await fs.writeFile(dataFile("state.json"), JSON.stringify(state, null, 2));
 
   return NextResponse.json({
@@ -108,7 +110,7 @@ export async function POST(req: Request) {
     roomNOInLunch,
     roomInLunch,
     isWorkingNolunch,
-    room
+    room: roomObj,
   });
 }
 
