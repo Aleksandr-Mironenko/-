@@ -128,53 +128,7 @@
       "roomEndWork": "23:06",
       "creatorEmail": "sanek.miron@mail.ru",
       "roomPassword": "1234",
-      "doctors": [
-        {
-          "id": 0,
-          "name": "Екатерина",
-          "startWork": 1027,
-          "endWork": 1212,
-          "lunchTime": 1147,
-          "counter": 22,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": true,
-          "isLunch": true,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:17:7. Закончит работать:20:12",
-          "finishedEarlierThanExpected": false
-        },
-        {
-          "id": 1,
-          "name": "312321",
-          "startWork": 1164,
-          "endWork": 1200,
-          "lunchTime": 1164,
-          "counter": 0,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": true,
-          "isLunch": true,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
-          "finishedEarlierThanExpected": false
-        },
-        {
-          "id": 2,
-          "name": "312321",
-          "startWork": 1164,
-          "endWork": 1200,
-          "lunchTime": 1164,
-          "counter": 0,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": true,
-          "isLunch": true,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
-          "finishedEarlierThanExpected": false
-        }
-      ],
+      "doctors": [],
       "messages": [
         "евгения пропустил(а) очередь в 17:13. Причина: льмадьмамь",
         "евгения пропустил(а) очередь в 17:30. Причина: ваи",
@@ -320,7 +274,7 @@
           "message": "12у2у"
         }
       ],
-      "active": 1,
+      "active": 0,
       "finishedDoctors": [
         {
           "time": "2026-03-30T14:31:29.734Z",
@@ -373,6 +327,78 @@
             "isLunch": false,
             "congratulations": false,
             "workTime": "Начал(а) работать:18:32. Закончит работать:0:32",
+            "finishedEarlierThanExpected": true
+          }
+        },
+        {
+          "time": "2026-03-30T19:53:00.175Z",
+          "doctor": {
+            "id": 0,
+            "name": "Екатерина",
+            "startWork": 1027,
+            "endWork": 1212,
+            "lunchTime": 1147,
+            "counter": 22,
+            "counterSkip": 0,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:17:7. Закончит работать:20:12",
+            "finishedEarlierThanExpected": false
+          }
+        },
+        {
+          "time": "2026-03-30T19:53:00.175Z",
+          "doctor": {
+            "id": 1,
+            "name": "312321",
+            "startWork": 1164,
+            "endWork": 1200,
+            "lunchTime": 1164,
+            "counter": 0,
+            "counterSkip": 0,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
+            "finishedEarlierThanExpected": false
+          }
+        },
+        {
+          "time": "2026-03-30T19:53:00.175Z",
+          "doctor": {
+            "id": 2,
+            "name": "312321",
+            "startWork": 1164,
+            "endWork": 1200,
+            "lunchTime": 1164,
+            "counter": 0,
+            "counterSkip": 0,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
+            "finishedEarlierThanExpected": false
+          }
+        },
+        {
+          "time": "2026-03-30T19:54:54.125Z",
+          "doctor": {
+            "id": 0,
+            "name": "321",
+            "startWork": 1373,
+            "endWork": 55,
+            "lunchTime": 1373,
+            "counter": 3,
+            "counterSkip": 0,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:22:53. Закончит работать:0:55",
             "finishedEarlierThanExpected": true
           }
         }

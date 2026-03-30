@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
   // const newDoctor: Doctor | null = null;
 
-  const { roomId, id /*password, name, timeStartWork, timeEndWork, lunch*/ } = await req.json();
+  const { roomId, id } = await req.json();
 
   if (!roomId || !id) {
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
@@ -41,13 +41,19 @@ export async function POST(req: Request) {
   }
 
 
-  const foundDocIndex = newRooms[foundRoomIndex].doctors.find(doc => doc.id === Number(id));
+  const room = newRooms[foundRoomIndex]
 
-  if (foundDocIndex === undefined) {
-    return NextResponse.json({ message: `Not deleted, not found roomId:${roomId}`, ok: false });
+  if (!("doctors" in room)) {
+    return NextResponse.json({ message: `Invalid room type`, ok: false });
   }
 
-  foundDocIndex.finishedEarlierThanExpected = true
+  const foundDoc = room.doctors.find(doc => doc.id === Number(id));
+
+  if (!foundDoc || foundDoc === null || foundDoc === undefined) {
+    return NextResponse.json({ message: `Doctor not found in room ${roomId}`, ok: false });
+  }
+
+  foundDoc.finishedEarlierThanExpected = true
 
   const newState = { rooms: newRooms };
   await fs.writeFile(dataFile("state.json"), JSON.stringify(newState, null, 2));
