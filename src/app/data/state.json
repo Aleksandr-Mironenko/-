@@ -146,17 +146,32 @@
         },
         {
           "id": 1,
-          "name": "SXCSC",
-          "startWork": 1112,
-          "endWork": 32,
-          "lunchTime": 1160,
-          "counter": 17,
-          "counterSkip": 1,
-          "isNext": true,
+          "name": "312321",
+          "startWork": 1164,
+          "endWork": 1200,
+          "lunchTime": 1164,
+          "counter": 0,
+          "counterSkip": 0,
+          "isNext": false,
           "isWorking": true,
-          "isLunch": false,
+          "isLunch": true,
           "congratulations": false,
-          "workTime": "Начал(а) работать:18:32. Закончит работать:0:32",
+          "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
+          "finishedEarlierThanExpected": false
+        },
+        {
+          "id": 2,
+          "name": "312321",
+          "startWork": 1164,
+          "endWork": 1200,
+          "lunchTime": 1164,
+          "counter": 0,
+          "counterSkip": 0,
+          "isNext": false,
+          "isWorking": true,
+          "isLunch": true,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:19:24. Закончит работать:20:00",
           "finishedEarlierThanExpected": false
         }
       ],
@@ -166,6 +181,18 @@
         "SXCSC пропустил(а) очередь в 18:54. Причина: ЧЫ"
       ],
       "chat": [
+        {
+          "time": "19:17",
+          "id": 22,
+          "name": "SXCSC",
+          "message": "привет ты на обеде?"
+        },
+        {
+          "time": "19:17",
+          "id": 21,
+          "name": "SXCSC",
+          "message": "привет ты на обеде?"
+        },
         {
           "time": "18:54",
           "id": 20,
@@ -328,6 +355,24 @@
             "isLunch": false,
             "congratulations": false,
             "workTime": "Начал(а) работать:17:34. Закончит работать:20:34",
+            "finishedEarlierThanExpected": true
+          }
+        },
+        {
+          "time": "2026-03-30T16:21:12.580Z",
+          "doctor": {
+            "id": 1,
+            "name": "SXCSC",
+            "startWork": 1112,
+            "endWork": 32,
+            "lunchTime": 1160,
+            "counter": 17,
+            "counterSkip": 1,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:18:32. Закончит работать:0:32",
             "finishedEarlierThanExpected": true
           }
         }

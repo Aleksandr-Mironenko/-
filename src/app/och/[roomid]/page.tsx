@@ -95,7 +95,7 @@ export default function Och() {
         router.push(`/authorized/${roomid}`);
       }
     }, 500)
-    return clearTimeout(timer)
+    return () => clearTimeout(timer)
   }, [loggedIn]);
 
   const createDoctor = () => {
