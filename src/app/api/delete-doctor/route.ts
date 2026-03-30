@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { readState, dataFile } from '@/app/helpers/getState'
 import fs from "fs/promises";
-import { Doctor } from '@/app/DTO'
-import { message } from "antd";
+// import { Doctor } from '@/app/DTO'
+// import { message } from "antd";
 
 
 
@@ -10,7 +10,7 @@ import { message } from "antd";
 
 export async function POST(req: Request) {
 
-  const newDoctor: Doctor | null = null;
+  // const newDoctor: Doctor | null = null;
 
   const { roomId, id /*password, name, timeStartWork, timeEndWork, lunch*/ } = await req.json();
 
@@ -24,15 +24,15 @@ export async function POST(req: Request) {
 
 
 
-  const now = new Date();
+  // const now = new Date();
 
-  const validTime = () => {
-    const min: number = now.getMinutes();
-    const minutes = min < 10 ? `0${min}` : String(min)
-    const h: number = now.getHours();
-    const hours = h < 10 ? `0${h}` : String(h)
-    return `${hours}:${minutes}`
-  }
+  // const validTime = () => {
+  //   const min: number = now.getMinutes();
+  //   const minutes = min < 10 ? `0${min}` : String(min)
+  //   const h: number = now.getHours();
+  //   const hours = h < 10 ? `0${h}` : String(h)
+  //   return `${hours}:${minutes}`
+  // }
 
 
 

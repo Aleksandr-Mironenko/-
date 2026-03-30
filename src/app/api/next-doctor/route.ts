@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
   const room = { ...state.rooms[roomIndex] };
 
-  const roomNOIIsWorking = room.doctors.filter((doc) => !doc.isWorking);
+  // const roomNOIIsWorking = room.doctors.filter((doc) => !doc.isWorking);
   const roomIsWorking = room.doctors.filter((doc) => doc.isLunch);
   const roomNOInLunch = room.doctors.filter((doc) => !doc.isLunch);
   const roomInLunch = room.doctors.filter((doc) => doc.isLunch);
@@ -29,11 +29,11 @@ export async function POST(req: Request) {
     };
 
   })
-  const isWorkinglunch = room.doctors.filter((doc) => {
-    if (doc.isWorking && doc.isLunch) {
-      return doc
-    }
-  });
+  // const isWorkinglunch = room.doctors.filter((doc) => {
+  //   if (doc.isWorking && doc.isLunch) {
+  //     return doc
+  //   }
+  // });
 
   if (roomIsWorking && isWorkingNolunch.length === 0) {
     return NextResponse.json(

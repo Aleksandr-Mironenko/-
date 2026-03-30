@@ -31,11 +31,11 @@ export default function Och() {
   const [roomId, setRoomId] = useState<number>(0);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [roomInLunch, setRoomInLunch] = useState<Doctor[]>([]);
-  const [roomNOInLunch, setRoomNOInLunch] = useState<Doctor[]>([]);
+  // const [roomNOInLunch, setRoomNOInLunch] = useState<Doctor[]>([]);
 
   const [reason, setReason] = useState<string>('')
-  const [roomIsWorkingDoctors, setRoomIsWorkingDoctors] = useState<Doctor[]>([]);
-  const [roomNOIsWorkingDoctors, setRoomNOIsWorkingDoctors] = useState<Doctor[]>([]);
+  // const [roomIsWorkingDoctors, setRoomIsWorkingDoctors] = useState<Doctor[]>([]);
+  // const [roomNOIsWorkingDoctors, setRoomNOIsWorkingDoctors] = useState<Doctor[]>([]);
   const [workAndNoLunch, setWorkAndNoLunch] = useState<Doctor[]>([]);
   const [newMessage, setNewMessage] = useState<string>('')
   const [different, setDifferent] = useState<boolean>(false)
@@ -73,9 +73,9 @@ export default function Och() {
       setDifferent(data.room.messages.length !== allstate.messages.length)
       setAllstate(data.room)
       setRoomInLunch(data.roomInLunch)
-      setRoomNOInLunch(data.roomNOInLunch)
-      setRoomIsWorkingDoctors(data.roomIsWorkingDoctors)
-      setRoomNOIsWorkingDoctors(data.roomNOIsWorkingDoctors)
+      // setRoomNOInLunch(data.roomNOInLunch)
+      // setRoomIsWorkingDoctors(data.roomIsWorkingDoctors)
+      // setRoomNOIsWorkingDoctors(data.roomNOIsWorkingDoctors)
       setWorkAndNoLunch(data.workAndNoLunch)
       if (data.next?.name) {
         setNexttDoctor(prev => prev || data.next.name)
@@ -127,7 +127,7 @@ export default function Och() {
     });
     const res = await response.json()
     setRoomInLunch(res.roomInLunch)
-    setRoomNOInLunch(res.roomNOInLunch)
+    // setRoomNOInLunch(res.roomNOInLunch)
     setNexttDoctor(res.nextDoctor)
     setWorkAndNoLunch(res.isWorkingNolunch)
     funcAsynUpdate()

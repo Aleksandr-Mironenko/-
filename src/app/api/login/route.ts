@@ -54,10 +54,10 @@ import fs from "fs/promises";
 import { cookies } from "next/headers";
 import { readState, dataFile } from "@/app/helpers/getState";
 
-interface RoomSecure {
-  roomId: number;
-  roomPassword: string;
-}
+// interface RoomSecure {
+//   roomId: number;
+//   roomPassword: string;
+// }
 
 const SECRET: string = process.env.JWT_SECRET ||
   (() => { throw new Error("JWT_SECRET is not defined in environment variables"); })();

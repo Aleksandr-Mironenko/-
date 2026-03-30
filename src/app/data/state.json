@@ -2,146 +2,336 @@
   "rooms": [
     {
       "roomId": 0,
-      "roomName": "11111",
-      "roomStartWork": "23:02",
-      "roomEndWork": "23:02",
-      "creatorEmail": "sanek.miron2@gmail.com",
-      "roomPassword": "1111",
-      "doctors": [],
-      "messages": [],
-      "chat": [
-        {
-          "time": "23:03",
-          "id": 0,
-          "name": "11111",
-          "message": "sdffefef"
-        }
-      ],
-      "active": -1,
-      "finishedDoctors": []
-    },
-    {
-      "roomId": 1,
-      "roomName": "Докторишки",
-      "roomStartWork": "23:06",
-      "roomEndWork": "08:05",
+      "roomName": "1111",
+      "roomStartWork": "22:46",
+      "roomEndWork": "22:46",
       "creatorEmail": "sanek.miron2@gmail.com",
       "roomPassword": "1111",
       "doctors": [
         {
-          "id": 0,
-          "name": "Екатерина Докторврач",
-          "startWork": 1388,
-          "endWork": 1200,
-          "lunchTime": 308,
-          "counter": 8,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": true,
-          "isLunch": false,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:23:8. Закончит работать:20:00",
-          "finishedEarlierThanExpected": false
-        },
-        {
           "id": 1,
-          "name": "Екатерина",
-          "startWork": 1390,
-          "endWork": 1417,
-          "lunchTime": 1419,
-          "counter": 7,
+          "name": "1111",
+          "startWork": 1422,
+          "endWork": 42,
+          "lunchTime": 342,
+          "counter": 0,
           "counterSkip": 0,
           "isNext": true,
           "isWorking": false,
           "isLunch": false,
           "congratulations": false,
-          "workTime": "Начал(а) работать:23:10. Закончит работать:23:37",
-          "finishedEarlierThanExpected": false
-        },
-        {
-          "id": 2,
-          "name": "Екатерина",
-          "startWork": 1391,
-          "endWork": 1425,
-          "lunchTime": 1403,
-          "counter": 0,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": false,
-          "isLunch": false,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:23:11. Закончит работать:23:45",
-          "finishedEarlierThanExpected": false
-        },
-        {
-          "id": 3,
-          "name": "231321",
-          "startWork": 1122,
-          "endWork": 1242,
-          "lunchTime": 1242,
-          "counter": 0,
-          "counterSkip": 0,
-          "isNext": false,
-          "isWorking": true,
-          "isLunch": false,
-          "congratulations": false,
-          "workTime": "Начал(а) работать:18:42. Закончит работать:20:42",
+          "workTime": "Начал(а) работать:23:42. Закончит работать:0:42",
           "finishedEarlierThanExpected": false
         }
       ],
       "messages": [],
       "chat": [
         {
-          "time": "23:13",
+          "time": "23:43",
+          "id": 8,
+          "name": "1111",
+          "message": "эточаткоторыйваввв"
+        },
+        {
+          "time": "23:43",
           "id": 7,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацываваувавававсвававуаавав"
+          "name": "1111",
+          "message": "эточаткоторыйвавв"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 6,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацываваувавававсвававуаа"
+          "name": "1111",
+          "message": "эточаткоторыйвав"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 5,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацываваувавававсва"
+          "name": "1111",
+          "message": "эточаткоторыйва"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 4,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацываваувавава"
+          "name": "1111",
+          "message": "эточаткоторый"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 3,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацывавау"
+          "name": "1111",
+          "message": "эточаткоторы"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 2,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпкцацу"
+          "name": "1111",
+          "message": "эточат"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 1,
-          "name": "Екатерина",
-          "message": "долтпаидлпиапкпк"
+          "name": "1111",
+          "message": "это"
         },
         {
-          "time": "23:13",
+          "time": "23:43",
           "id": 0,
-          "name": "Екатерина",
-          "message": "долтпаидлпи"
+          "name": "1111",
+          "message": "это"
         }
       ],
       "active": 1,
-      "finishedDoctors": []
+      "finishedDoctors": [
+        {
+          "time": "2025-11-19T19:49:35.487Z",
+          "doctor": {
+            "id": 1,
+            "name": "3333",
+            "startWork": 1367,
+            "endWork": 1439,
+            "lunchTime": 1439,
+            "counter": 0,
+            "counterSkip": 0,
+            "isNext": true,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:22:47. Закончит работать:23:59",
+            "finishedEarlierThanExpected": true
+          }
+        },
+        {
+          "time": "2025-11-23T20:43:06.852Z",
+          "doctor": {
+            "id": 0,
+            "name": "1111",
+            "startWork": 1367,
+            "endWork": 1439,
+            "lunchTime": 1439,
+            "counter": 1,
+            "counterSkip": 0,
+            "isNext": true,
+            "isWorking": false,
+            "isLunch": true,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:22:47. Закончит работать:23:59",
+            "finishedEarlierThanExpected": false
+          }
+        }
+      ]
+    },
+    {
+      "roomId": 1,
+      "roomName": "дежурОчка",
+      "roomStartWork": "17:06",
+      "roomEndWork": "23:06",
+      "creatorEmail": "sanek.miron@mail.ru",
+      "roomPassword": "1234",
+      "doctors": [
+        {
+          "id": 0,
+          "name": "Екатерина",
+          "startWork": 1027,
+          "endWork": 1212,
+          "lunchTime": 1147,
+          "counter": 22,
+          "counterSkip": 0,
+          "isNext": false,
+          "isWorking": true,
+          "isLunch": true,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:17:7. Закончит работать:20:12",
+          "finishedEarlierThanExpected": false
+        },
+        {
+          "id": 1,
+          "name": "SXCSC",
+          "startWork": 1112,
+          "endWork": 32,
+          "lunchTime": 1160,
+          "counter": 17,
+          "counterSkip": 1,
+          "isNext": true,
+          "isWorking": true,
+          "isLunch": false,
+          "congratulations": false,
+          "workTime": "Начал(а) работать:18:32. Закончит работать:0:32",
+          "finishedEarlierThanExpected": false
+        }
+      ],
+      "messages": [
+        "евгения пропустил(а) очередь в 17:13. Причина: льмадьмамь",
+        "евгения пропустил(а) очередь в 17:30. Причина: ваи",
+        "SXCSC пропустил(а) очередь в 18:54. Причина: ЧЫ"
+      ],
+      "chat": [
+        {
+          "time": "18:54",
+          "id": 20,
+          "name": "SXCSC",
+          "message": "СММИА"
+        },
+        {
+          "time": "18:53",
+          "id": 19,
+          "name": "SXCSC",
+          "message": "ПРИВЕТЧЧЫ"
+        },
+        {
+          "time": "18:53",
+          "id": 18,
+          "name": "SXCSC",
+          "message": "ПРИВЕТЧЧ"
+        },
+        {
+          "time": "18:53",
+          "id": 17,
+          "name": "SXCSC",
+          "message": "ПРИВЕТЧ"
+        },
+        {
+          "time": "18:52",
+          "id": 16,
+          "name": "SXCSC",
+          "message": "GHBDTN"
+        },
+        {
+          "time": "18:35",
+          "id": 15,
+          "name": "SXCSC",
+          "message": "ИТИ СМ СМ"
+        },
+        {
+          "time": "17:28",
+          "id": 14,
+          "name": "евгения",
+          "message": "амывмdvdvdvdvdvdvdvdvымывмsdvdsvмывмыв"
+        },
+        {
+          "time": "17:28",
+          "id": 13,
+          "name": "евгения",
+          "message": "амывмdvdvdvdvdvdvdvdvымывмsdvdsv"
+        },
+        {
+          "time": "17:28",
+          "id": 12,
+          "name": "евгения",
+          "message": "амывмdvdvdvdvdvdvdvdvымывм"
+        },
+        {
+          "time": "17:28",
+          "id": 11,
+          "name": "евгения",
+          "message": "амывмdvdvdvdvdvdvdvdv"
+        },
+        {
+          "time": "17:28",
+          "id": 10,
+          "name": "евгения",
+          "message": "амывмdvdvdvdvdvdv"
+        },
+        {
+          "time": "17:28",
+          "id": 9,
+          "name": "евгения",
+          "message": "амывмdvdvdvdv"
+        },
+        {
+          "time": "17:28",
+          "id": 8,
+          "name": "евгения",
+          "message": "амывмdvdv"
+        },
+        {
+          "time": "17:28",
+          "id": 7,
+          "name": "евгения",
+          "message": "амывм"
+        },
+        {
+          "time": "17:11",
+          "id": 6,
+          "name": "евгения",
+          "message": "cdvdvdfacadcacadc"
+        },
+        {
+          "time": "17:11",
+          "id": 5,
+          "name": "евгения",
+          "message": "cdvdvdfacadc"
+        },
+        {
+          "time": "17:11",
+          "id": 4,
+          "name": "евгения",
+          "message": "cdvdvdf"
+        },
+        {
+          "time": "17:09",
+          "id": 3,
+          "name": "Екатерина",
+          "message": "12у2ууауаввсвцсвсвс"
+        },
+        {
+          "time": "17:09",
+          "id": 2,
+          "name": "Екатерина",
+          "message": "12у2ууауаввсвцс"
+        },
+        {
+          "time": "17:09",
+          "id": 1,
+          "name": "Екатерина",
+          "message": "12у2ууауа"
+        },
+        {
+          "time": "17:09",
+          "id": 0,
+          "name": "Екатерина",
+          "message": "12у2у"
+        }
+      ],
+      "active": 1,
+      "finishedDoctors": [
+        {
+          "time": "2026-03-30T14:31:29.734Z",
+          "doctor": {
+            "id": 1,
+            "name": "евгения",
+            "startWork": 1030,
+            "endWork": 1390,
+            "lunchTime": 1330,
+            "counter": 7,
+            "counterSkip": 2,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:17:10. Закончит работать:23:10",
+            "finishedEarlierThanExpected": true
+          }
+        },
+        {
+          "time": "2026-03-30T14:36:53.421Z",
+          "doctor": {
+            "id": 1,
+            "name": "имя",
+            "startWork": 1054,
+            "endWork": 1234,
+            "lunchTime": 1174,
+            "counter": 6,
+            "counterSkip": 0,
+            "isNext": false,
+            "isWorking": false,
+            "isLunch": false,
+            "congratulations": false,
+            "workTime": "Начал(а) работать:17:34. Закончит работать:20:34",
+            "finishedEarlierThanExpected": true
+          }
+        }
+      ]
     }
   ]
 }
