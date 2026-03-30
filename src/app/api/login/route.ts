@@ -77,13 +77,14 @@ export async function POST(req: Request) {
     if (roomIndex !== -1) {
       const room = structuredClone(state.rooms[roomIndex])
 
-      const docindex = room.doctors.findIndex((el) => el.id === Number(userId));
-      if (docindex !== -1) {
-        room.doctors.splice(docindex, 1)
+      if ("doctors" in room) {
+        const docIndex = room.doctors.findIndex(el => el.id === Number(userId));
+        if (docIndex !== -1) {
+          room.doctors.splice(docIndex, 1);
+          state.rooms[roomIndex] = room;
 
-        state.rooms[roomIndex] = room;
-
-        await fs.writeFile(dataFile("state.json"), JSON.stringify(state, null, 2));
+          await fs.writeFile(dataFile("state.json"), JSON.stringify(state, null, 2));
+        }
       }
     }
   }
@@ -91,7 +92,7 @@ export async function POST(req: Request) {
   const stateSecure = await readState("state-password.json");
 
   const foundRoom = stateSecure.rooms.find(room => room.roomId === Number(roomId));
-  if (!foundRoom || foundRoom.roomPassword !== password) {
+  if (!foundRoom || !("roomPassword" in foundRoom) || foundRoom.roomPassword !== password) {
     return NextResponse.json({ error: "Password error" }, { status: 401 });
   }
   const newToken = jwt.sign({ password, roomId }, SECRET, { expiresIn: '14h' });
