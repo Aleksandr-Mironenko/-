@@ -11,8 +11,8 @@ const SECRET = process.env.JWT_SECRET
 
 export async function GET() {//тут бы изменить гет на пост с передачей значения комнаты чтобы не обновлять вообще все состояние хотя это сделает его более
 
-  const cookieStore = await cookies();
-  const token = cookieStore.get("jwt")?.value;
+  const cookieStore = await cookies();//получаю куку
+  const token = cookieStore.get("jwt")?.value;//токен из куки
 
   let userIdInToken = undefined
   let roomIdInToken = undefined
@@ -23,7 +23,17 @@ export async function GET() {//тут бы изменить гет на пост
     roomIdInToken = decodedInToken.roomId;
   }
 
-  const { shouldDeleteCookies } = await updateDoctorStatuses({ userIdInToken, roomIdInToken });
+  if (!userIdInToken || !roomIdInToken) {
+    return NextResponse.json({
+      update: false,
+      cookiesCleared: false
+    });
+  }
+
+  const { shouldDeleteCookies } = await updateDoctorStatuses({
+    userIdInToken,
+    roomIdInToken
+  });
 
   const res = NextResponse.json({ update: true, cookiesCleared: shouldDeleteCookies });
 
@@ -63,10 +73,11 @@ async function updateDoctorStatuses({ userIdInToken, roomIdInToken }: { userIdIn
   const znstringValidTime = stringValidTime()
 
   let shouldDeleteCookies = false;
-  let nextDoc: Doctor[] = []
+  let nextDoc: [Doctor, number][] = []
   const funcDeleteAfterTime = (roomId: string, id: string) => {
-    const indexRoomId = updatedRooms.findIndex(el => el.roomId == roomId)//ищу индекс комнаты которой айдишник передан
-    const docId = updatedRooms[indexRoomId].doctors.findIndex(el => el.id == id)//ищу индекс доктора которого айдишник передан
+    const indexRoomId = updatedRooms.findIndex(el => el.roomId == Number(roomId))//ищу индекс комнаты которой айдишник передан
+    if (indexRoomId === -1) return;
+    const docId = updatedRooms[indexRoomId].doctors.findIndex((el: Doctor) => el.id == Number(id))//ищу индекс доктора которого айдишник передан
     if (docId !== -1) {
       updatedRooms[indexRoomId].doctors.splice(docId, 1);
     } else {
@@ -81,14 +92,14 @@ async function updateDoctorStatuses({ userIdInToken, roomIdInToken }: { userIdIn
     }
   }
 
-  const addFinishedDoctors = (roomId, doctor) => {
-    const indexRoomId = updatedRooms.findIndex(el => el.roomId == roomId)
+  const addFinishedDoctors = (roomId: string, doctor: Doctor) => {
+    const indexRoomId = updatedRooms.findIndex(el => el.roomId == Number(roomId))
     const time = new Date().toISOString()
     updatedRooms[indexRoomId].finishedDoctors.push({ time, doctor })
   }
-  const roomsToDelete = []
+  const roomsToDelete: typeof updatedRooms = []
   for (const room of updatedRooms) {
-    const doctorsToDelete = [];
+    const doctorsToDelete: number[] = [];
     if (room.doctors.length !== 0) {
       for (const doctor of room.doctors) {
         let doctorEnd = doctor.endWork;
