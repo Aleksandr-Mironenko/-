@@ -5,7 +5,7 @@ import { Doctor } from '@/app/DTO'
 
 export async function POST(req: Request) {
 
-  let newDoctor: Doctor | null = null;
+  // let newDoctor: Doctor | null = null;
 
   const { roomId, password, name, timeStartWork, timeEndWork, lunch } = await req.json();
 
@@ -13,15 +13,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
 
-  let id = 0
+
 
   const state = await readState("state.json");
 
   const stateSecure = await readState("state-password.json");
 
-  const foundRoom = stateSecure.rooms.find(room => room.roomId === Number(roomId));
-
-  if (!foundRoom || foundRoom?.roomPassword !== password) {
+  const foundRoom = stateSecure.rooms.find(
+    (room): room is { roomId: number; roomPassword: string } =>
+      "roomPassword" in room && room.roomId === Number(roomId)
+  );
+  if (!foundRoom || foundRoom.roomPassword !== password) {
     return NextResponse.json({ ok: false, error: "Invalid room ID or password" }, { status: 401 });
   }
 
@@ -41,15 +43,19 @@ export async function POST(req: Request) {
     return `Начал(а) работать:${correctTimeString(start)}. Закончит работать:${correctTimeString(end)}`
   }
 
+  let newDoctor: Doctor | null = null;
+  let newDoctorId: number | null = null;
+
 
   const updatedRooms = state.rooms.map(el => {
-    if (el.roomId === Number(roomId)) {
+    if (el.roomId === Number(roomId) && "doctors" in el) {
       if (!Array.isArray(el.doctors)) {
         el.doctors = [];
       }
+      const newId = el.doctors.length ? Math.max(...el.doctors.map(d => d.id)) + 1 : 0;
 
-      newDoctor = <Doctor>{
-        id: el.doctors.length ? Math.max(...el.doctors.map(d => d.id)) + 1 : 0,
+      newDoctor = {
+        id: newId,
         name,
         startWork: correctTime(timeStartWork),
         endWork: correctTime(timeEndWork),
@@ -63,8 +69,11 @@ export async function POST(req: Request) {
         workTime: stringTime(timeStartWork, timeEndWork),
         finishedEarlierThanExpected: false
       };
+      newDoctorId = newId;
 
-      id = newDoctor.id;
+
+
+
 
       return { ...el, doctors: [...el.doctors, newDoctor] };
     }
@@ -78,11 +87,11 @@ export async function POST(req: Request) {
   const newState = { rooms: updatedRooms };
   await fs.writeFile(dataFile("state.json"), JSON.stringify(newState, null, 2));
 
-  const save = NextResponse.json({ id, roomId, newDoctor });
+  const save = NextResponse.json({ id: newDoctorId, roomId, newDoctor });
 
   save.cookies.set({
     name: "userId",
-    value: String(id),
+    value: String(newDoctorId),
     httpOnly: true,
     sameSite: "strict",
     maxAge: 60 * 60 * 14,

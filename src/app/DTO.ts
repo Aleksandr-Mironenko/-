@@ -11,6 +11,7 @@ export interface Doctor {
   isLunch: boolean;
   congratulations: boolean;
   finishedEarlierThanExpected: boolean
+  workTime: string;
 }
 
 export interface Room {

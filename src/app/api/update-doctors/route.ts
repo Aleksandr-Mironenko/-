@@ -1,74 +1,11 @@
 
-// Создаёшь api/update-doctors (см. пример выше)
-
-// Регистрируешься на https://upstash.com
-
-// В разделе Scheduler указываешь:
-
-// URL: https://твойдомен/api/update-doctors
-
-// Schedule: Every minute
-
-// Готово — теперь Upstash будет дёргать твою API-функцию каждые 60 секунд.
-
-// 
-
-
-
-
-
-//https://console.upstash.com/qstash/request-builder?teamid=0
-
-//🔹 1. В поле Место назначения
-
-// Выбери тип URL
-// и вставь туда адрес твоего Next.js API:
-
-// https://твой-домен/api/update-doctors
-
-
-// (замени на свой реальный домен или Vercel URL)
-
-// 🔹 2. В блоке Тип
-
-// Выбери вкладку «Расписание»
-// (она справа от «Публиковать» и «Поставить в очередь»).
-
-// 🔹 3. В появившихся полях укажи:
-
-// Cron schedule →
-
-// */1 * * * *
-
-
-// (это каждую минуту)
-
-// Body можешь оставить пустым, если твой эндпоинт не требует данных.
-
-// Если нужно, добавь заголовки:
-
-// {
-//   "Content-Type": "application/json"
-// }
-
-// 🔹 4. Нажми «Отправлять» или «Создать»
-
-// После этого QStash сохранит задачу, и она появится в разделе
-// 📅 «Расписание» (вкладка справа от «Конструктор запросов»).
-
-// 🔹 5. Проверь, что всё работает
-
-// Перейди в:
-
-// QStash → Расписание (Schedules)
-// и убедись, что там есть твой URL и что он срабатывает.
-
 import { NextResponse } from "next/server";
 import { readState, dataFile } from '@/app/helpers/getState'
 import fs from "fs/promises";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { sendEmail } from "@/app/helpers/sendEmail"
+import { Doctor } from "@/app/DTO";
 
 const SECRET = process.env.JWT_SECRET
 
@@ -100,7 +37,7 @@ export async function GET() {//тут бы изменить гет на пост
 
 
 
-async function updateDoctorStatuses({ userIdInToken, roomIdInToken }) {
+async function updateDoctorStatuses({ userIdInToken, roomIdInToken }: { userIdInToken: string, roomIdInToken: string }) {
   const state = await readState("state.json");
   const statePassword = await readState("state-password.json");
 
@@ -126,8 +63,8 @@ async function updateDoctorStatuses({ userIdInToken, roomIdInToken }) {
   const znstringValidTime = stringValidTime()
 
   let shouldDeleteCookies = false;
-  let nextDoc = []
-  const funcDeleteAfterTime = (roomId, id) => {
+  let nextDoc: Doctor[] = []
+  const funcDeleteAfterTime = (roomId: string, id: string) => {
     const indexRoomId = updatedRooms.findIndex(el => el.roomId == roomId)//ищу индекс комнаты которой айдишник передан
     const docId = updatedRooms[indexRoomId].doctors.findIndex(el => el.id == id)//ищу индекс доктора которого айдишник передан
     if (docId !== -1) {

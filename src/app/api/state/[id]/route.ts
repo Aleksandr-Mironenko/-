@@ -10,9 +10,10 @@ export async function GET(req: Request,
 
   const room = state.rooms.find(el => el.roomId === idd);
 
-  if (!room) {
+  if (!room || !("doctors" in room)) {
     return NextResponse.json({ error: "Room not found" }, { status: 404 });
   }
+
   const roomInLunch = room.doctors.filter(doc => doc.isLunch === true)
 
   const roomNOInLunch = room.doctors.filter(doc => doc.isLunch === false)
